@@ -7,8 +7,8 @@
 ![back render](back.png)
 
 A few notes on the circuit itself:
-1. The [SOT-23-6 AT42QT1011](https://www.microchip.com/wwwproducts/en/AT42QT1011) is out of stock everywhere. ¯\\\_(ツ)_/¯
-2. If you manage to find the right IC, the SYNC pin is default tied to GND. You have to cut the jumper bridge if you want to use a different SYNC option.
+1. This uses the [UDFN-8 AT42QT1011](https://www.microchip.com/wwwproducts/en/AT42QT1011) because the SOT-23-6 package is out of stock everywhere. ¯\\\_(ツ)_/¯
+2. The SYNC pin is default tied to GND. You have to cut the jumper bridge if you want to use a different SYNC option.
 3. The HONK pin goes high when it detects a touch.
 
 A few notes on the KiCad project:

@@ -14,17 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Sensor_Touch:AT42QT1011-TSHR U1
-U 1 1 609816E1
-P 5000 2100
-F 0 "U1" H 5000 2581 50  0000 C CNN
-F 1 "AT42QT1011-TSHR" H 5000 2490 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23-6" H 5050 1850 50  0001 L CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/40001947A.pdf" H 5270 2650 50  0001 C CNN
-	1    5000 2100
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:C_Small C2
 U 1 1 6098325B
 P 5575 2100
@@ -170,4 +159,15 @@ Text GLabel 4225 3375 0    50   Input ~ 0
 0V
 Text Notes 3625 2825 0    50   ~ 0
 (Please note that SYNC is by default tied to GND)
+$Comp
+L Sensor_Touch:AT42QT1011-M U1
+U 1 1 6098677B
+P 5000 2100
+F 0 "U1" H 5000 2581 50  0000 C CNN
+F 1 "AT42QT1011-M" H 5000 2490 50  0000 C CNN
+F 2 "Package_DFN_QFN:DFN-8-1EP_2x2mm_P0.5mm_EP0.9x1.5mm" H 5050 1850 50  0001 L CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/40001947A.pdf" H 5270 2650 50  0001 C CNN
+	1    5000 2100
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
