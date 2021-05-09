@@ -3,6 +3,8 @@
 [@Gnarflordius](https://twitter.com/Gnarflordius) made a KiCad footprint of the Horrible Goose so I turned it into a capacitative-touch circuit that can be hooked up to the microcontroller of your choice.
 
 ![schematic](schematic.png)
+![front render](front.png)
+![back render](back.png)
 
 A few notes on the circuit itself:
 1. The [SOT-23-6 AT42QT1011](https://www.microchip.com/wwwproducts/en/AT42QT1011) is out of stock everywhere. ¯\\\_(ツ)_/¯
