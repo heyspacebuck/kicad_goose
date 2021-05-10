@@ -47,17 +47,6 @@ F 3 "~" H 4050 2000 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Device:R R1
-U 1 1 60984DE5
-P 6025 2000
-F 0 "R1" V 5818 2000 50  0000 C CNN
-F 1 "1 kΩ" V 5909 2000 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5955 2000 50  0001 C CNN
-F 3 "~" H 6025 2000 50  0001 C CNN
-	1    6025 2000
-	0    1    1    0   
-$EndComp
-$Comp
 L Device:C_Small C3
 U 1 1 60987348
 P 6325 2225
@@ -68,8 +57,6 @@ F 3 "~" H 6325 2225 50  0001 C CNN
 	1    6325 2225
 	1    0    0    -1  
 $EndComp
-Text GLabel 6500 2000 2    50   Input ~ 0
-horrible_goose
 Text GLabel 3750 1750 0    50   Input ~ 0
 Vin
 Text GLabel 3750 2450 0    50   Input ~ 0
@@ -98,9 +85,6 @@ Wire Wire Line
 Wire Wire Line
 	6325 2000 6175 2000
 Wire Wire Line
-	6325 2000 6500 2000
-Connection ~ 6325 2000
-Wire Wire Line
 	5875 2000 5575 2000
 Wire Wire Line
 	5575 2000 5400 2000
@@ -116,17 +100,6 @@ Wire Wire Line
 	4400 2450 5000 2450
 Text GLabel 4600 2200 3    50   Input ~ 0
 honk
-$Comp
-L goose:Goose GOOSE1
-U 1 1 60983F4E
-P 6575 1550
-F 0 "GOOSE1" H 6907 1595 50  0000 L CNN
-F 1 "Goose" H 6907 1504 50  0000 L CNN
-F 2 "goose:honk_captouch_scaled" H 5785 1270 150 0001 C CNN
-F 3 "" H 5785 1270 150 0001 C CNN
-	1    6575 1550
-	1    0    0    -1  
-$EndComp
 $Comp
 L Connector_Generic:Conn_01x04 J1
 U 1 1 6098622A
@@ -170,4 +143,15 @@ Text GLabel 4225 3375 0    50   Input ~ 0
 0V
 Text Notes 3625 2825 0    50   ~ 0
 (Please note that SYNC is by default tied to GND)
+$Comp
+L goose:R_Goose R1
+U 1 1 60989A76
+P 6875 1750
+F 0 "R1" H 6025 1650 50  0000 C CNN
+F 1 "1 kΩ" H 6025 1575 50  0000 C CNN
+F 2 "" H 6085 1470 150 0001 C CNN
+F 3 "" H 6085 1470 150 0001 C CNN
+	1    6875 1750
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
