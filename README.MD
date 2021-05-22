@@ -1,13 +1,14 @@
 # Horrible Goose Badge
 
-[@Gnarflordius](https://twitter.com/Gnarflordius) made a KiCad footprint of the Horrible Goose so I turned it into a capacitative-touch circuit that can be hooked up to the microcontroller of your choice.
+[@Gnarflordius](https://twitter.com/Gnarflordius) made a KiCad footprint of the Horrible Goose so I turned it into a capacitative-touch circuit that can be hooked up to the microcontroller of your choice. There is a demo Arduino sketch provided (it might only work on ATmega328 boards, but I'm not sure)
 
 ![schematic](schematic.png)
 ![front render](front.png)
 ![back render](back.png)
 
 A few notes on the circuit itself:
-1. The [SOT-23-6 AT42QT1011](https://www.microchip.com/wwwproducts/en/AT42QT1011) is out of stock everywhere. ¯\\\_(ツ)_/¯
+1. <s>The [SOT-23-6 AT42QT1011](https://www.microchip.com/wwwproducts/en/AT42QT1011) is out of stock everywhere. ¯\\\_(ツ)_/¯</s> LCSC has a bunch in stock as of May 22 2021!
+1. If you want to use the UDFN-8 version of the AT42QT1011, the schematic for that is [in a different branch](https://github.com/heyspacebuck/kicad_goose/tree/8-udfn).
 2. If you manage to find the right IC, the SYNC pin is default tied to GND. You have to cut the jumper bridge if you want to use a different SYNC option.
 3. The HONK pin goes high when it detects a touch.
 
