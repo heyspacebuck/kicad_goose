@@ -51,7 +51,7 @@ L Device:C_Small C3
 U 1 1 60987348
 P 6325 2225
 F 0 "C3" H 6417 2271 50  0000 L CNN
-F 1 "5-20 pF" H 6417 2180 50  0000 L CNN
+F 1 "10 pF" H 6417 2180 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6325 2225 50  0001 C CNN
 F 3 "~" H 6325 2225 50  0001 C CNN
 	1    6325 2225
@@ -101,17 +101,6 @@ Wire Wire Line
 Text GLabel 4600 2200 3    50   Input ~ 0
 honk
 $Comp
-L Connector_Generic:Conn_01x04 J1
-U 1 1 6098622A
-P 4425 3175
-F 0 "J1" H 4505 3167 50  0000 L CNN
-F 1 "Conn_01x04" H 4505 3076 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 4425 3175 50  0001 C CNN
-F 3 "~" H 4425 3175 50  0001 C CNN
-	1    4425 3175
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:Jumper_NC_Small JP1
 U 1 1 60987404
 P 4400 2225
@@ -133,15 +122,7 @@ sync
 Wire Wire Line
 	4400 1900 4400 2000
 Connection ~ 4400 2000
-Text GLabel 4225 3075 0    50   Input ~ 0
-Vin
-Text GLabel 4225 3175 0    50   Input ~ 0
-honk
-Text GLabel 4225 3275 0    50   Input ~ 0
-sync
-Text GLabel 4225 3375 0    50   Input ~ 0
-0V
-Text Notes 3625 2825 0    50   ~ 0
+Text Notes 3675 2800 0    50   ~ 0
 (Please note that SYNC is by default tied to GND)
 $Comp
 L goose:R_Goose R1
@@ -149,9 +130,48 @@ U 1 1 60989A76
 P 6875 1750
 F 0 "R1" H 6025 1650 50  0000 C CNN
 F 1 "1 kΩ" H 6025 1575 50  0000 C CNN
-F 2 "" H 6085 1470 150 0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" H 6085 1470 150 0001 C CNN
 F 3 "" H 6085 1470 150 0001 C CNN
 	1    6875 1750
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector_Generic:Conn_02x03_Odd_Even J1
+U 1 1 612344DA
+P 4450 3325
+F 0 "J1" V 4454 3137 50  0000 R CNN
+F 1 "SAO Connector" V 4545 3137 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 4450 3325 50  0001 C CNN
+F 3 "~" H 4450 3325 50  0001 C CNN
+	1    4450 3325
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4350 3725 4350 3625
+Wire Wire Line
+	4250 3725 4350 3725
+Text GLabel 4250 3725 0    50   Input ~ 0
+0V
+Text GLabel 4250 3025 0    50   Input ~ 0
+Vin
+Wire Wire Line
+	4250 3025 4350 3025
+Wire Wire Line
+	4350 3025 4350 3125
+NoConn ~ 4450 3125
+NoConn ~ 4450 3625
+Text GLabel 4650 3025 2    50   Input ~ 0
+honk
+Text GLabel 4650 3725 2    50   Input ~ 0
+sync
+Wire Wire Line
+	4650 3725 4550 3725
+Wire Wire Line
+	4550 3725 4550 3625
+Wire Wire Line
+	4650 3025 4550 3025
+Wire Wire Line
+	4550 3025 4550 3125
+Text Notes 3650 4050 0    50   ~ 0
+Connector follows the Shitty Add-On v1.69bis """standard"""\nhttps://hackaday.com/2019/03/20/introducing-the-shitty-add-on-v1-69bis-standard/
 $EndSCHEMATC
