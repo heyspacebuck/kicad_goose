@@ -7,7 +7,7 @@
 ![back render](back.png)
 
 A few notes on the circuit itself:
-1. The connector follows the [Shitty Add-On v1.69bis]() pinout. GPIO1 is the HONK pin; GPIO2 is the SYNC pin (tied to ground by default).
+1. The connector follows the [Shitty Add-On v1.69bis](https://hackaday.com/2019/03/20/introducing-the-shitty-add-on-v1-69bis-standard/) pinout. GPIO1 is the HONK pin; GPIO2 is the SYNC pin (tied to ground by default).
 1. The HONK pin goes high when it detects a touch.
 1. The SYNC pin is default tied to GND. You have to cut the jumper bridge if you want to use a different SYNC option.
 1. <s>The [SOT-23-6 AT42QT1011](https://www.microchip.com/wwwproducts/en/AT42QT1011) is out of stock everywhere. ¯\\\_(ツ)_/¯</s> LCSC has a bunch in stock as of August 22 2021, I don't see any other sites with stock.
