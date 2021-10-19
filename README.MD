@@ -49,4 +49,6 @@ The Arduino and ATtiny85 code is derived from two sources: ["Audio Sample Player
 
 The [SOICbite connector](https://hackaday.io/project/165917-soicbite-programmingdebug-connector-footprint) is an awesome little design from Simon Merrett and is released under the BSD 2-Clause "Simplified" License.
 
+The HONK text was generated using the very cool [KiBuzzard plugin by Greg Davill](https://github.com/gregdavill/KiBuzzard).
+
 ![Schematic with goose stealing a resistor](stolen.png)
