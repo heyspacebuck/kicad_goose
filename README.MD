@@ -34,10 +34,10 @@ This project is in the `kicad/` folder named `SAO-captouch-and-eye-after-dark.pr
 ![schematic](schematic4.png)
 ![front render](front4.png)
 ![back render](back4.png)
-![photo of an older revision](pcb4a.jpg)
-![photo of an older revision](pcb4b.jpg)
+![photo of an assembled PCB](pcb4a.jpg)
+![photo of an assembled PCB](pcb4b.jpg)
 
-This project is in the `kicad/` folder named `SAO-speaker-and-controller.pro`. Once I learned about the existence of extra-small "sugar cube" speakers, I knew I'd have to build an SAO that could function as a standalone honking device. In addition to the cap-touch IC, there's an ATtiny85 driving a 16mm×9mm speaker. Once I got the tiny speaker, it became clear that 3.3V is not sufficient to get an audible honk! I have added a simple boost converter to drive the ATtiny85 and the speaker with 5V instead of 3.3V; be warned that I've only tested it on a breadboard, not this PCB.
+This project is in the `kicad/` folder named `SAO-speaker-and-controller.pro`. Once I learned about the existence of extra-small "sugar cube" speakers, I knew I'd have to build an SAO that could function as a standalone honking device. In addition to the cap-touch IC, there's an ATtiny85 driving a 16mm×9mm speaker. Once I got the tiny speaker, it became clear that 3.3V is not sufficient to get an audible honk! I have added a simple boost converter to drive the ATtiny85 and the speaker with 5V instead of 3.3V.
 
 The ATtiny85 is programmed with a [SOICbite connector](https://hackaday.io/project/165917-soicbite-programmingdebug-connector-footprint); if you don't have one it is easy to solder wires to the SOICbite pads. The code is in the `code/tiny85_speaker_control` folder. It's set up for compiling/programming using the Arduino IDE and ATtinyCore approach. You could also use Atmel's QT creator, since the code uses no Arduino-specific methods; just rename `tiny85_speaker_control.ino` to `main.c`.
 
