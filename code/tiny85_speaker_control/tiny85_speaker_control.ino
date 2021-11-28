@@ -5,6 +5,9 @@
    Partly based on "speaker_pcm" by Michael Smith <michael@hurts.ca>, unclear license: https://playground.arduino.cc/Code/PCMAudio/
 */
 
+#include <avr/sleep.h>
+#include <util/delay.h>
+
 // Audio samples encoded as unsigned 8-bit blocks, 16kHz sampling rate
 #include "gooseaudio.h"
 
@@ -17,7 +20,6 @@ volatile byte amplitude = 0x80;    // The value of the current byte of audio dat
 volatile bool honking = false;     // Monitors if a honk is currently being played, to prevent another one from starting.
 volatile bool debouncing = false;  // Monitors if a pin change interrupt was very recently triggered, to prevent triggering signals a few clock cycles apart.
 volatile int debounceFrames = 0;   // Counts how many Timer0 interrupts have occurred since the debounce window began.
-
 
 // Disable Timer/Counter 0 and Timer/Counter 1 to save power
 void disableTimers() {
@@ -33,21 +35,21 @@ void enableTimers() {
 
 // Enter low power sleep mode
 void sleepyGoose() {
-  ADCSRA &= ~(1 << ADEN);          // Disable ADC (Datasheet p.136)
+  sei();
   MCUCR |= 1 << SE;                // Enter sleep mode (Datasheet p.37)
+  sleep_cpu();
 }
 
 // Exit low power sleep mode
 void awakeGoose() {
-  ADCSRA |= 1 << ADEN;             // Enable ADC  (Datasheet p.136)
   MCUCR &= ~(1 << SE);             // Wake up from sleep mode (Datasheet p.37)
+  cli();
 }
 
 
 void setup() {
   // Enable pin change interrupt (Datasheet p.51-52)
   GIMSK |= 1 << PCIE;              // Pin Change Interrupt enabled
-  MCUCR &= ~(0b10 << ISC00);       // Set Pin Change Interrupt to trigger on any level change
   PCMSK = 1 << PCINT3;             // Pin Change Interrupt occurs only when PB3 (pin 2) changes value
 
   // Enable Timer/Counter 0, set up to interrupt at 16000 kHz (Datasheet p.77-81)
@@ -65,16 +67,10 @@ void setup() {
   GTCCR |= 2 << COM1B0;            // OC1B goes LOW on counter match
   OCR1A = 128;                     // Set both speaker pins to 50% duty cycle at start
   OCR1B = 128;                     // Set both speaker pins to 50% duty cycle at start
-  
-  MCUCR |= 3<<SM0;                 // Enable sleep mode to save power (Datasheet p.37)
 
-  DDRB = (1<<DD1) | (1<<DD4);      // Set both speaker pins as outputs 
+  MCUCR |= 2 << SM0;               // Enable sleep mode to save power (Datasheet p.37)
 
-/*
-  pinMode(SPEAKER_PIN_1, OUTPUT);  // Driving two speaker pins lets us treat them like a differential pair, which...
-  pinMode(SPEAKER_PIN_2, OUTPUT);  // ...removes an unwanted DC offset if we choose to amplify the signal.
-  pinMode(INPUT_PIN, INPUT);
-*/
+  DDRB = (1 << DD1) | (1 << DD4);  // Set both speaker pins as outputs
 }
 
 void loop() {
@@ -85,7 +81,6 @@ void loop() {
 //   Ignore if pin goes LOW, or if we're in the debouncing window, or if a honk is already playing.
 //   If none of those conditions AND pin goes HIGH, exit sleep mode, turn on timers, and enter the debouncing window.
 ISR(PCINT0_vect) {
-  //if (!honking && !debouncing && digitalRead(INPUT_PIN)) {
   if (!honking && !debouncing && (PINB & (1<<PINB3))) {
     awakeGoose();
     enableTimers();
@@ -112,7 +107,7 @@ ISR(TIMER0_COMPA_vect) {
       OCR1B = amplitude ^ 255;
     } else if (index < (DATA_LENGTH + 128)) {
       // Fade out after the sound is done playing
-      amplitude = 128 - (index-DATA_LENGTH);
+      amplitude = 128 - (index - DATA_LENGTH);
       OCR1A = amplitude;
       OCR1B = amplitude;
     } else {
@@ -122,14 +117,13 @@ ISR(TIMER0_COMPA_vect) {
     }
     ++index;
   }
-  
+
   if (debouncing) {
     debounceFrames++;
     if (debounceFrames > 100) {
       debouncing = false;
       debounceFrames = 0;
-      //if (digitalRead(INPUT_PIN)) {
-      if (PINB & (1<<PINB3)) {
+      if (PINB & (1 << PINB3)) {
         honking = true;
         index = -127;
       }

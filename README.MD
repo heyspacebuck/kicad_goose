@@ -1,6 +1,6 @@
 # Horrible Goose Badge SAO
 
-[@Gnarflordius](https://twitter.com/Gnarflordius) made a KiCad footprint of the Horrible Goose so I turned it into a set of capacitive-touch boards that function as [Shitty Add-Ons](https://hackaday.com/2019/03/20/introducing-the-shitty-add-on-v1-69bis-standard/). All the boards are based on the [Atmel AT42QT101x chips](http://ww1.microchip.com/downloads/en/DeviceDoc/40001947A.pdf), which are out of stock everywhere right now. Sorry. If anyone has suggestions for alternate cap-touch sensors, or knows how to set up QTouch on an ATtiny, please drop me a line.
+[@Gnarflordius](https://twitter.com/Gnarflordius) made a KiCad footprint of the Horrible Goose so I turned it into a set of capacitive-touch boards that function as [Simple Add-Ons](https://hackaday.com/2019/03/20/introducing-the-shitty-add-on-v1-69bis-standard/). All the boards are based on the [Atmel AT42QT101x chips](http://ww1.microchip.com/downloads/en/DeviceDoc/40001947A.pdf), which are out of stock everywhere right now. Sorry. If anyone has suggestions for alternate cap-touch sensors, or knows how to set up QTouch on an ATtiny, please drop me a line.
 
 The `/kicad` folder is set up to contain multiple projects that each rely on `goose.lib` and `\goose.pretty` for schematic symbols and PCB footprints. These projects are:
 
